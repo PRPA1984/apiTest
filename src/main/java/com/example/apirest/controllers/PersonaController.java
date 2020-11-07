@@ -28,7 +28,8 @@ public class PersonaController extends BaseControllerImpl<Persona, PersonaServic
 	@GetMapping(path = "/search")
 	public ResponseEntity<?> search (@RequestParam String filtro){
 		try {
-			return ResponseEntity.status(HttpStatus.OK).body(servicio.search(filtro));
+			//return ResponseEntity.status(HttpStatus.OK).body(servicio.search(filtro));
+			return null;
 		}
 		catch (Exception e){
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\": \""+e.getMessage());
