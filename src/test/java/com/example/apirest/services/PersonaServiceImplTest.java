@@ -5,9 +5,11 @@ import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -27,7 +29,92 @@ class PersonaServiceImplTest {
 	
 	@Autowired
 	private PersonaServiceImpl personaService;
-	
+
+	@Test
+	void findAllTest() throws Exception {
+		Persona persona1 = new Persona();
+		persona1.setNombre("Pablo");
+		persona1.setApellido("Peña");
+
+		Persona persona2 = new Persona();
+		persona2.setNombre("Jorge");
+		persona2.setApellido("Peña");
+
+		List<Persona> listaEnviada = new ArrayList<Persona>();
+		listaEnviada.add(persona1);
+		listaEnviada.add(persona2);
+
+		when(personaRepository.findAll()).thenReturn(listaEnviada);
+
+
+		assertEquals(listaEnviada, personaService.findAll());
+
+	}
+
+	@Test
+	void findOneTest() throws Exception {
+		Persona persona1 = new Persona();
+		persona1.setNombre("Pablo");
+		persona1.setApellido("Peña");
+
+		List<Persona> listaEnviada = new ArrayList<Persona>();
+		listaEnviada.add(persona1);
+
+
+		when(personaRepository.findById(1L)).thenReturn(Optional.of(persona1));
+
+		assertEquals(persona1, personaService.findById(1L));
+
+	}
+
+	@Test
+	void saveTest() throws Exception {
+		Persona persona1 = new Persona();
+		persona1.setNombre("Pablo");
+		persona1.setApellido("Peña");
+
+		List<Persona> listaEnviada = new ArrayList<Persona>();
+		listaEnviada.add(persona1);
+
+
+		when(personaRepository.save(persona1)).thenReturn(persona1);
+
+		assertEquals(persona1, personaService.save(persona1));
+
+	}
+
+	@Test
+	void deleteTest() throws Exception {
+		Persona persona1 = new Persona();
+		persona1.setNombre("Pablo");
+		persona1.setApellido("Peña");
+
+		List<Persona> listaEnviada = new ArrayList<Persona>();
+		listaEnviada.add(persona1);
+
+		when(personaRepository.existsById(1L)).thenReturn(true);
+
+
+		assertEquals(true, personaService.delete(1L));
+
+	}
+
+	@Test
+	void updateTest() throws Exception {
+		Persona persona1 = new Persona();
+		persona1.setNombre("Pablo");
+		persona1.setApellido("Peña");
+
+		List<Persona> listaEnviada = new ArrayList<Persona>();
+		listaEnviada.add(persona1);
+
+		when(personaRepository.findById(1L)).thenReturn(Optional.of(persona1));
+		when(personaRepository.save(persona1)).thenReturn(persona1);
+
+		assertEquals(persona1, personaService.update(persona1,1L));
+
+	}
+
 	@Test
 	void testSearchString() throws Exception {
 		Persona persona = new Persona();
