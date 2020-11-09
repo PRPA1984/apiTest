@@ -6,6 +6,8 @@ import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.apirest.ApirestApplication;
+import io.swagger.annotations.Api;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +21,7 @@ import com.example.apirest.services.PersonaServiceImpl;
 
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = ApirestApplication.class)
 class PersonaServiceImplTest {
 
 	@MockBean
@@ -27,7 +29,43 @@ class PersonaServiceImplTest {
 	
 	@Autowired
 	private PersonaServiceImpl personaService;
-	
+
+	@Test
+	public void findAllTest() throws Exception {
+		Persona persona1 = new Persona();
+		persona1.setNombre("Pablo");
+		persona1.setApellido("Peña");
+
+		Persona persona2 = new Persona();
+		persona2.setNombre("Jorge");
+		persona2.setApellido("Peña");
+
+		List<Persona> listaEnviada = new ArrayList<Persona>();
+		listaEnviada.add(persona1);
+		listaEnviada.add(persona2);
+
+		when(personaRepository.findAll()).thenReturn(listaEnviada);
+
+
+		assertEquals(listaEnviada, personaService.findAll());
+	}
+
+	@Test
+	public void findOneTest() {
+
+	}
+
+	@Test
+	public void updateTest() {
+
+	}
+
+	@Test
+	public void saveTest() {
+
+	}
+
+
 	@Test
 	void testSearchString() throws Exception {
 		Persona persona = new Persona();
