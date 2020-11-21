@@ -37,12 +37,9 @@ import com.example.apirest.ApirestApplication;
 import com.example.apirest.entities.Persona;
 import com.example.apirest.repositories.PersonaRepository;
 
-
-@RunWith(SpringRunner.class)
 @SpringBootTest(classes = ApirestApplication.class)
 @AutoConfigureMockMvc
 @TestPropertySource(
-  //locations = "classpath:application-testing.properties")
 		locations = "classpath:application-test.properties")
 class PersonaControllerIntegration {
 	
@@ -63,8 +60,7 @@ class PersonaControllerIntegration {
 		
 		mockMvc.perform(get("/api/v1/personas/search")
 				.param("filtro", "Paul")
-				.contentType(MediaType.APPLICATION_JSON)
-				.accept(MediaType.APPLICATION_JSON))
+				.contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$[0].nombre", is("Paul")))
 				.andExpect(jsonPath("$[0].apellido", is("McCartney")));

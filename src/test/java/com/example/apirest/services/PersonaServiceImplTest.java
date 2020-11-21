@@ -11,14 +11,12 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.apirest.entities.Persona;
 import com.example.apirest.repositories.PersonaRepository;
 import com.example.apirest.services.PersonaServiceImpl;
 
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 class PersonaServiceImplTest {
 

@@ -51,8 +51,7 @@ class PersonaControllerTest {
 		
 		mockMvc.perform(get("/api/v1/personas/search")
 				.param("filtro", "Pablo")
-				.contentType(MediaType.APPLICATION_JSON)
-				.accept(MediaType.APPLICATION_JSON))
+				.contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$[0].nombre", is("Pablo")))
 				.andExpect(jsonPath("$[0].apellido", is("Peña")));
