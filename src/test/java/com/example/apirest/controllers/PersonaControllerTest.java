@@ -28,7 +28,7 @@ import com.example.apirest.entities.Persona;
 import com.example.apirest.services.PersonaServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@RunWith(SpringRunner.class)
+//@RunWith(SpringRunner.class)
 @WebMvcTest(PersonaController.class)
 class PersonaControllerTest {
 
