@@ -39,6 +39,8 @@ public class Persona extends Base{
 	private String apellido;
 	
 	private String exampleOne;
+  
+	private String exampleTwo;
 	
 	@Column(name = "dni")
 	private int dni;
