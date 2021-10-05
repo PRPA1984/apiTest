@@ -38,6 +38,8 @@ public class Persona extends Base{
 	@Column(name = "apellido")
 	private String apellido;
 	
+	private String exampleTwo;
+	
 	@Column(name = "dni")
 	private int dni;
 	
