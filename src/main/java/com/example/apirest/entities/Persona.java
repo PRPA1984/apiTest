@@ -29,7 +29,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor //Cambio
+@AllArgsConstructor
 public class Persona extends Base{
 
 	@Column(name = "nombre")
@@ -37,10 +37,6 @@ public class Persona extends Base{
 	
 	@Column(name = "apellido")
 	private String apellido;
-	
-	private String exampleOne;
-  
-	private String exampleTwo;
 	
 	@Column(name = "dni")
 	private int dni;
