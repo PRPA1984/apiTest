@@ -29,7 +29,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@AllArgsConstructor //Cambio
 public class Persona extends Base{
 
 	@Column(name = "nombre")
